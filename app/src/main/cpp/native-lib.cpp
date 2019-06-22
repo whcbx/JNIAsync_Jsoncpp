@@ -146,13 +146,16 @@ void *download(void *p) {
     }
 
     str = jsonValue.toStyledString();
-    env->CallIntMethod( g_obj, javaCallbackId,env->NewStringUTF(str.c_str()),25);
+//    env->CallIntMethod( g_obj, javaCallbackId,env->NewStringUTF(str.c_str()),25);
+    env->CallIntMethod( g_obj, javaCallbackId,env->NewStringUTF(jsonValue2.toStyledString().c_str()),25);
+
 
     //释放当前线程
     if(mNeedDetach) {
         g_VM->DetachCurrentThread();
     }
     env = NULL;
+    return NULL;
 }
 
 
